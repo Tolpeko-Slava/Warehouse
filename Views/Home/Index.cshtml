@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Warehouse.Models.Product>
+@{
+    //ViewData["Title"] = "Список смартфонов";
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+    <title>Warehouse</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+</head>
+    <body>
+        <table>
+            <tr>
+                <th>№</th>
+                <th>Название</th>
+                <th>Количество</th>
+            </tr>
+            @foreach (var product in Model)
+            {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.NumberProduct</td>
+            </tr>
+            }
+        </table>
+    </body>    
+</html>
