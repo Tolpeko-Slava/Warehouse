@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+
+<html>
+    <head>
+        <title>Warehouse</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+    @if (ViewBag.Authorization == false)
+    {
+        @if (ViewBag.AuthorizationPost == true)
+        {
+            <p>Пользователь был не найден</p>
+        }
+        @using (Html.BeginForm("Authorization", "Home", FormMethod.Post))
+        {
+            <label>Login</label>
+            <input type="text" name="name"/>
+            <br />
+            <label>Password</label>
+            <input type="password" name="password" />
+            <input type="submit" value="Join"/>
+        }
+    }
+    else
+    {
+        <h2>Hello</h2>
+    }
+    </body>
+</html>

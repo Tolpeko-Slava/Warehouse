@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<Warehouse.Models.Product>
 @{
-    //ViewData["Title"] = "Список смартфонов";
     Layout = null;
 }
 <!doctype html>
@@ -11,6 +10,7 @@
     <meta name="viewport" content="width=device-width">
 </head>
     <body>
+        @Html.ActionLink("Онлайн-магазин", "Authorization", "Home")
         <table>
             <tr>
                 <th>№</th>
