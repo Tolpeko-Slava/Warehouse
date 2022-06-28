@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Warehouse.Models.Product>
+
 @{
     Layout = null;
 }
@@ -10,21 +11,31 @@
     <meta name="viewport" content="width=device-width">
 </head>
     <body>
-        @Html.ActionLink("Онлайн-магазин", "Authorization", "Home")
-        <table>
-            <tr>
-                <th>№</th>
-                <th>Название</th>
-                <th>Количество</th>
-            </tr>
-            @foreach (var product in Model)
-            {
-            <tr>
-                <td>@product.Id</td>
-                <td>@product.Name</td>
-                <td>@product.NumberProduct</td>
-            </tr>
-            }
-        </table>
+        @Html.ActionLink("Авторизация", "Authorization", "Home")
+        @Html.ActionLink("Добавить товар","AddNewProduct","Home")
+        @using(Html.BeginForm("","Home",FormMethod.Post))
+        {
+        int i = 1;
+        <input type="submit" value="Delete">
+            <table>
+                <tr> 
+                    <th></th>
+                    <th>№</th>
+                    <th>Название</th>
+                    <th>Количество</th>
+                </tr>
+                @foreach (var product in Model)
+                {
+
+                <tr>
+                    <td><input type="checkbox" name="check" value=@i></td>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.NumberProduct</td>
+                </tr>
+                i++;
+                }
+            </table>
+        }
     </body>    
 </html>

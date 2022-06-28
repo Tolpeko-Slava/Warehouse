@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+
+<html>
+    <head>
+        <title>Warehouse</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        @using (Html.BeginForm("AddNewProduct", "Home", FormMethod.Post))
+        {
+            <p>Название товара</p>
+            <input type="text" name="name" />
+            <p>Количество</p>
+            <input type="number" name="number" />
+            <br />
+            <input type="submit" value="Добавить" />
+        }
+    </body>
+</html>

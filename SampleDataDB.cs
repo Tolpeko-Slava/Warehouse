@@ -22,11 +22,6 @@ namespace Warehouse
                     {
                         Name = "iPhone X",
                         NumberProduct = 10
-                    },
-                    new Product
-                    {
-                        Name = "Samsung Galaxy Edge",
-                        NumberProduct = 20
                     }
                 );
                 context.SaveChanges();

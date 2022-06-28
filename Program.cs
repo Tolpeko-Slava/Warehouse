@@ -19,17 +19,8 @@ namespace Warehouse
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-
-           //     try
-            //    {
-                    var context = services.GetRequiredService<ProductContext>();
-                    SampleDataDB.Initialize(context);
-            /*    }
-                catch (Exception ex)
-                {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred seeding the DB.");
-                }*/
+                var context = services.GetRequiredService<ProductContext>();
+                SampleDataDB.Initialize(context);
             }
             host.Run();
         }

@@ -8,7 +8,6 @@ namespace Warehouse.Models
 {
     public class ProductRepository
     {
-
         /// <summary>
         /// Получение полного списка товаров. 
         /// </summary>
@@ -33,9 +32,20 @@ namespace Warehouse.Models
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        public int SaveProduct(ProductContext context,Product product)
+        public int SaveProduct(ProductContext context, Product product)
         {
-            if(product.Id == default)
+            List<Product> result = context.products.Where(x => x == product).ToList();
+
+            if(result.Any())
+            {
+                context.products.Remove(result[0]);
+                product.NumberProduct += result[0].NumberProduct;
+                context.products.Update(product);
+                context.SaveChanges();
+                return product.Id;
+            }
+
+            if (product.Id == default)
             {
                 context.Entry(product).State = EntityState.Added;
             }
@@ -51,10 +61,13 @@ namespace Warehouse.Models
         /// Удаление товара из таблицы товаров.
         /// </summary>
         /// <param name="product"></param>
-        public void DeliteProduct(ProductContext context, Product product)
+        public void DeleteProduct(ProductContext context, Product product)
         {
+            //
+            //При удаление id не переопределяется (возможно ошибка переполнения)
+            //
             context.products.Remove(product);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
     }
 }
